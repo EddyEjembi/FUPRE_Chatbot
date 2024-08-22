@@ -1,0 +1,8 @@
+openai
+azure-identity
+python-dotenv
+pymongo
+nltk
+fastapi
+uvicorn
+numpy
