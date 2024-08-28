@@ -3,3 +3,4 @@ __pycache__/
 *.py[cod]
 /test.py
 /bot2.py
+/Dockerfile
