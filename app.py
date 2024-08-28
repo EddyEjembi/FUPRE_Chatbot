@@ -8,6 +8,7 @@ rag_handler = RAGHandler()  # Initialize the RaGHandler instance
 class QueryRequest(BaseModel):
     question: str
 
+
 @app.post("/ask")
 async def ask_question(request: QueryRequest):
     try:
