@@ -92,7 +92,7 @@ class RAGHandler:
                           "query_type": "semantic",
                           "fields_mapping": {},
                           "in_scope": True,
-                          "role_information": f"You are an AI assistant that helps people find information about FUPRE. Only provide information contained in this document, and when a User asks a question that is not relating, or out of point, respond nicely with this message: {wrong}",
+                          "role_information": f"You are an AI assistant that helps people find information about FUPRE. Only provide information contained in this document, answer users questions that might seem vaugue but is relating to the subject. When a User asks a question that is not relating, or out of point and the subject, respond nicely with only this message: {wrong}",
                           "filter": None,
                           "strictness": 3,
                           "top_n_documents": 5,

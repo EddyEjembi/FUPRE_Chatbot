@@ -67,9 +67,9 @@ class CacheManager:
             response = []
             # Print results
             for i in results:
-                if i['score'] > 1.0:
+                if i['score'] > 0.95:
                     response.append(i)
-                print(i)
+                #print(i)
             return response if response else None
         
         except Exception as e:
@@ -91,7 +91,7 @@ class CacheManager:
                     print(f"Response Text: {response_text}")
                     # Check if a significant portion of the keywords match
                     match_count = sum(1 for word in query_keywords if word in response_text)
-                    if match_count >= len(query_keywords) * 0.7:  # 100% threshold
+                    if match_count >= len(query_keywords) * 1.0:  # 100% threshold
                         filtered_results.append(result) 
                 
                 if filtered_results:
