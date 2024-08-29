@@ -1,8 +1,8 @@
 import os
 from dotenv import load_dotenv
 from pymongo.mongo_client import MongoClient
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
+#from nltk.corpus import stopwords
+#from nltk.tokenize import word_tokenize
 
 load_dotenv()
 
@@ -20,7 +20,7 @@ class CacheManager:
         self.collection = self.database[self.collection_name]
 
         #Initialiize English Stopwords
-        self.stop_words = set(stopwords.words('english'))
+        #self.stop_words = set(stopwords.words('english'))
 
         # Send a ping to confirm a successful connection
         try:
@@ -29,10 +29,10 @@ class CacheManager:
         except Exception as e:
             print(f"Could not ping Database: {e}")
 
-    def remove_stopwords(self, text):
+    """def remove_stopwords(self, text):
         word_tokens = word_tokenize(text)
         filtered_text = [w for w in word_tokens if not w.lower() in self.stop_words]
-        return filtered_text
+        return filtered_text"""
     
     def semantic_query(self, query_embedding):
         try:
