@@ -52,7 +52,7 @@ class RAGHandler:
     
     def perform_rag(self, text):
     
-        wrong = """
+        wrong = f"""
             I'm sorry, but I can't provide that information.
             Please contact <a href='https://wa.me/7049969643'>German</a> for more informtion. Thank you!
         """
@@ -61,7 +61,7 @@ class RAGHandler:
             You are an AI assistant that helps people find information about FUPRE (Federal University of Petroleum Resources, Effurun). 
             Only provide information contained in the provided document. Answer user questions that might seem vague as long as they relate to FUPRE. 
 
-            If a user asks a question that is irrelevant or out of context, respond politely and warmly with the following message: {wrong}
+            If a user asks a question that is irrelevant or out of context, or not in the retrieved documents, respond politely and warmly with the following message: {wrong}
         """
 
         try:
@@ -104,7 +104,7 @@ class RAGHandler:
                           "query_type": "semantic",
                           "fields_mapping": {},
                           "in_scope": True,
-                          "role_information": prompt,
+                          "role_information": f"{prompt}",
                           "filter": None,
                           "strictness": 3,
                           "top_n_documents": 5,
