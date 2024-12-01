@@ -51,6 +51,19 @@ class RAGHandler:
         return dot(vec1, vec2) / (norm(vec1) * norm(vec2))"""
     
     def perform_rag(self, text):
+    
+        wrong = """
+            I'm sorry, but I can't provide that information.
+            Please contact <a href='https://wa.me/7049969643'>German</a> for more informtion. Thank you!
+        """
+
+        prompt = f"""
+            You are an AI assistant that helps people find information about FUPRE (Federal University of Petroleum Resources, Effurun). 
+            Only provide information contained in the provided document. Answer user questions that might seem vague as long as they relate to FUPRE. 
+
+            If a user asks a question that is irrelevant or out of context, respond politely and warmly with the following message: {wrong}
+        """
+
         try:
             # Send request to Azure OpenAI model
             print("...Processing Request...")
@@ -60,7 +73,6 @@ class RAGHandler:
 
             #Perform Vector Search on the Cache
             result = self.cache_manager.semantic_filter(query_embedding, text)
-            wrong = "The requested information is not available in the retrieved data. Please try another query or topic."
 
             if result:
                 print(f"found result in cache:")
@@ -87,12 +99,12 @@ class RAGHandler:
                         "type": "azure_search",
                         "parameters": {
                           "endpoint": f"{self.search_endpoint}",
-                          "index_name": "fuprechatbot-09-08-24",
+                          "index_name": "fuprebot-01-12-24",
                           "semantic_configuration": "default",
                           "query_type": "semantic",
                           "fields_mapping": {},
                           "in_scope": True,
-                          "role_information": f"You are an AI assistant that helps people find information about FUPRE. Only provide information contained in this document, answer users questions that might seem vaugue but is relating to the subject. When a User asks a question that is not relating, or out of point and the subject, respond nicely with only this message: {wrong}",
+                          "role_information": prompt,
                           "filter": None,
                           "strictness": 3,
                           "top_n_documents": 5,
